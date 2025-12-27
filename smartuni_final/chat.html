@@ -1,17 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chat</title>
+    <meta charset="UTF-8">
+    <title>General Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #5f72ff, #9b6cff);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .chat-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 440px;
+            height: 650px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #4b3df5;
+            color: white;
+            padding: 16px;
+            text-align: center;
+        }
+
+        /* INBOX */
+        .inbox {
+            background: #f4f6ff;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .inbox h4 {
+            margin: 0 0 8px;
+            font-size: 14px;
+        }
+
+        .message {
+            background: #ffffff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            font-size: 13px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        /* DROPDOWN BLOCK */
+        .people {
+            background: #fafbff;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .people h4 {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* CHAT AREA */
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            background: #fafbff;
+        }
+
+        .robot {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        /* INPUT */
+        .chat-input {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #4b3df5;
+            color: white;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .chat-footer {
+            text-align: center;
+            font-size: 12px;
+            padding: 6px;
+            color: #777;
+            background: #f4f6ff;
+        }
+    </style>
 </head>
 <body>
-    <h2>General Chat</h2>
-    <p>Students and seniors can interact here.</p>
 
-    <input type="text" placeholder="Type message">
-    <button>Send</button>
+<div class="chat-container">
 
-    <p><i>Live chat coming soon</i></p>
+    <div class="chat-header">
+        <h3>💬 General Chat</h3>
+        <p style="font-size:13px;">Students & Faculty Interaction</p>
+    </div>
 
-    <a href="/dashboard">Back to Dashboard</a>
+    <!-- Inbox -->
+    <div class="inbox">
+        <h4>📥 Inbox (Unread)</h4>
+        <div class="message"> Welcome!</div>
+        <div class="message"> Updated schedule</div>
+    </div>
+
+    <!-- Dropdown Section -->
+    <div class="people">
+        <h4>👥 Select Audience</h4>
+
+        <select id="roleSelect" onchange="handleRoleChange()">
+            <option value="">-- Select Role --</option>
+            <option value="students">🎓 Students</option>
+            <option value="faculty">👩‍🏫 Faculty</option>
+        </select>
+
+        <select id="sessionSelect" style="display:none;">
+            <option value="">-- Select Session --</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+            <option>2021</option>
+            <option>2020</option>
+        </select>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-messages">
+        <div class="robot">🤖</div>
+        <p>
+            Please select a group to start chatting 💬
+        </p>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" placeholder="Type your message..." disabled>
+        <button>Send</button>
+    </div>
+
+    <div class="chat-footer">
+        Chat system under development 🚧
+    </div>
+
+</div>
+
+<!-- JavaScript -->
+<script>
+    function handleRoleChange() {
+        const role = document.getElementById("roleSelect").value;
+        const sessionDropdown = document.getElementById("sessionSelect");
+
+        if (role === "students") {
+            sessionDropdown.style.display = "block";
+        } else {
+            sessionDropdown.style.display = "none";
+            sessionDropdown.value = "";
+        }
+    }
+</script>
+
 </body>
 </html>
