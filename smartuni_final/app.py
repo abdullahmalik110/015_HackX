@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, redirect
+from flask import jsonify
+import random
+
 
 app = Flask(__name__)
 
@@ -31,27 +34,43 @@ def chat():
         chat_messages.append(request.form["message"])
     return render_template("chat.html", messages=chat_messages)
 
+@app.route("/ai")
+def ai_page():
+    return render_template("ai_chat.html")
+
+
 # 🧠 AI ASSISTANT
-@app.route("/ai", methods=["GET", "POST"])
-def ai():
-    advice = skills = future = ""
-    if request.method == "POST":
-        gpa = float(request.form["gpa"])
-        course = request.form["course"].lower()
+@app.route("/ai-chat", methods=["POST"])
+def ai_chat():
+    user_msg = request.json.get("message","").lower()
 
-        if gpa < 2.5:
-            future = "Improve academic foundation."
-            skills = "Time management, study skills"
-        elif gpa < 3.5:
-            future = "Strengthen technical profile."
-            skills = "Python, Git, Data Structures"
-        else:
-            future = "Internships & research recommended."
-            skills = "AI/ML, leadership"
+    if "gpa" in user_msg:
+        reply = "📊 Improve GPA by revising daily, solving past papers and managing your time using weekly planners."
 
-        advice = "Choose career path aligned with your courses."
+    elif "fail" in user_msg or "low marks" in user_msg:
+        reply = "😔 Failure is not the end. Identify weak subjects, meet your teachers and practice consistently."
 
-    return render_template("ai.html", advice=advice, skills=skills, future=future)
+    elif "skills" in user_msg:
+        reply = "💡 Learn Python, SQL, GitHub, Data Analysis and AI tools to build a strong career profile."
+
+    elif "internship" in user_msg:
+        reply = "🧑‍💼 Start internships from 3rd semester, build projects and connect with seniors on LinkedIn."
+
+    elif "courses" in user_msg or "subjects" in user_msg:
+        reply = "📚 Recommended subjects: Data Structures, Database Systems and Intro to AI."
+
+    elif "hello" in user_msg or "hi" in user_msg:
+        reply = "Hello 👋 I am Uni Fellow AI. How can I help you today?"
+
+    else:
+        reply = random.choice([
+            "That’s interesting, can you explain more?",
+            "I am here to guide your academic journey.",
+            "Please share more details so I can assist better."
+        ])
+
+    return jsonify({"reply": reply})
+
 
 # 📢 FACULTY ANNOUNCEMENTS (POST + VIEW)
 @app.route("/faculty/announcements", methods=["GET", "POST"])
@@ -76,6 +95,5 @@ def societies():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
 
 
