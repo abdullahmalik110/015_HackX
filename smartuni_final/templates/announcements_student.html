@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Announcements - SmartUni</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h2><i class="fas fa-bullhorn"></i> University Announcements</h2>
+
+    <ul>
+        {% for ann in announcements %}
+            <li class="announcement-student">{{ ann }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/student">Back</a>
+</div>
+</body>
+</html>
+
+
+

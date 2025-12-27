@@ -1,0 +1,193 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(120deg, #f0f4ff, #ffffff);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Card style */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Buttons */
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px #2563eb;
+}
+
+/* Badge */
+.badge {
+    background: #e0e7ff;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Announcement list */
+ul li {
+    background: #f7f9fc;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* Card hover animation */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    background: #f0f4ff;
+}
+
+/* AI suggestion card */
+.ai-card {
+    background: #e0f7fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.ai-card:hover {
+    transform: scale(1.02);
+}
+
+/* Announcements colors */
+.announcement-student {
+    background: #f7f9fc;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.announcement-faculty {
+    background: #dbeafe;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Societies hover effect */
+.society-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin: 10px 0;
+    width: 100%;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.society-button:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+}
+/* Float animation for cards */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+.card {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Button hover bounce */
+button:hover {
+    transform: scale(1.07);
+}
+
+/* Banner animation */
+.banner-img {
+    animation: bannerZoom 10s ease-in-out infinite alternate;
+}
+
+@keyframes bannerZoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Icon hover rotation */
+.card i, .society-button i {
+    transition: transform 0.3s, color 0.3s;
+}
+
+.card i:hover, .society-button i:hover {
+    transform: rotate(15deg);
+    color: #1e40af;
+}
+

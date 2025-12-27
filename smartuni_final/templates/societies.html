@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>University Societies - SmartUni</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h2><i class="fas fa-users"></i> University Societies</h2>
+
+    <form method="post">
+        <button type="submit" name="society" value="AI Society" class="society-button">🤖 AI Society</button>
+        <button type="submit" name="society" value="Drama Club" class="society-button">🎭 Drama Club</button>
+        <button type="submit" name="society" value="Art Society" class="society-button">🎨 Art Society</button>
+    </form>
+
+    {% if message %}
+        <p style="color: green;"><b>{{ message }}</b></p>
+    {% endif %}
+
+    {% if registered %}
+        <h3>Your Registrations:</h3>
+        <ul>
+            {% for s in registered %}
+                <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="javascript:history.back()">Back</a>
+</div>
+</body>
+</html>

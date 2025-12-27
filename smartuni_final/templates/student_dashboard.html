@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard - SmartUni</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Student Dashboard</h2>
+    <img src="{{ url_for('static', filename='banner.png') }}" class="banner-img" style="width:100%;border-radius:12px;margin-bottom:20px;">
+
+    <div class="nav">
+        <a href="/chat">
+            <div class="card"><i class="fas fa-comments fa-2x"></i><br>Chat</div>
+        </a>
+        <a href="/ai">
+            <div class="card"><i class="fas fa-robot fa-2x"></i><br>AI Assistant</div>
+        </a>
+        <a href="/student/announcements">
+            <div class="card"><i class="fas fa-bullhorn fa-2x"></i><br>Announcements</div>
+        </a>
+        <a href="/societies">
+            <div class="card"><i class="fas fa-users fa-2x"></i><br>Societies</div>
+        </a>
+    </div>
+
+    <p style="text-align:center;">Welcome to your SmartUni academic workspace.</p>
+
+    <a href="/">Logout</a>
+</div>
+</body>
+</html>
+
+
+
+
+

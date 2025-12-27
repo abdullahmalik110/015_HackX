@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Assistant - SmartUni</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h2><i class="fas fa-robot"></i> AI Academic & Career Assistant</h2>
+
+    <form method="post">
+        <label>GPA</label>
+        <input type="number" step="0.01" name="gpa" placeholder="Enter your GPA" required>
+
+        <label>Completed / Current Course</label>
+        <input name="course" placeholder="e.g. AI, CS, Math" required>
+
+        <button type="submit"><i class="fas fa-lightbulb"></i> Get Guidance</button>
+    </form>
+
+    {% if advice %}
+    <div class="ai-card">
+        <ul>
+            <li>💡 <b>Career Direction:</b> {{ advice }}</li>
+            <li>🚀 <b>Future Focus:</b> {{ future }}</li>
+            <li>🛠️ <b>Recommended Skills:</b> {{ skills }}</li>
+        </ul>
+    </div>
+    {% endif %}
+
+    <a href="javascript:history.back()">Back</a>
+</div>
+</body>
+</html>
+
+
+
+
+
+

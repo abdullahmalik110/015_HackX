@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>General Chat - SmartUni</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h2><i class="fas fa-comments"></i> General Chat</h2>
+
+    <form method="post">
+        <input name="message" placeholder="Type your message..." required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+    </form>
+
+    <ul>
+        {% for msg in messages %}
+            <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="javascript:history.back()">Back</a>
+</div>
+</body>
+</html>
+
+
+
+

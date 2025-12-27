@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Dashboard - SmartUni</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Faculty Dashboard</h2>
+    <div class="nav">
+        <a href="/chat">
+            <div class="card"><i class="fas fa-comments fa-2x"></i><br>Chat</div>
+        </a>
+        <a href="/faculty/announcements">
+            <div class="card"><i class="fas fa-bullhorn fa-2x"></i><br>Post Announcements</div>
+        </a>
+    </div>
+
+    <p style="text-align:center;">Manage official communication efficiently.</p>
+
+    <a href="/">Logout</a>
+</div>
+</body>
+</html>
+
+
+
