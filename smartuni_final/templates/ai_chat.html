@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Uni Fellow AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-container {
+            width: 420px;
+            max-width: 95%;
+            height: 90vh;
+            background: #111827;
+            border-radius: 18px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 15px;
+            background: #1f2937;
+            text-align: center;
+            font-size: 18px;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .chat-box {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .msg {
+            margin: 10px 0;
+            padding: 12px 14px;
+            border-radius: 12px;
+            max-width: 80%;
+            animation: fadeIn .3s ease-in;
+        }
+
+        .user {
+            background: #2563eb;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .bot {
+            background: #374151;
+            color: #e5e7eb;
+            align-self: flex-start;
+        }
+
+        .input-box {
+            display: flex;
+            padding: 10px;
+            background: #1f2937;
+        }
+
+        .input-box input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: #111827;
+            color: #fff;
+        }
+
+        .input-box button {
+            margin-left: 10px;
+            background: #38bdf8;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chat-container">
+        <div class="header">🤖 Uni Fellow AI Assistant</div>
+        <div id="chat" class="chat-box"></div>
+
+        <div class="input-box">
+            <input type="text" id="msg" placeholder="Ask me anything about GPA, courses, skills...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function addMessage(text, cls) {
+            const div = document.createElement("div");
+            div.className = "msg " + cls;
+            div.innerText = text;
+            document.getElementById("chat").appendChild(div);
+            document.getElementById("chat").scrollTop = chat.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("msg");
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, "user");
+            input.value = "";
+
+            fetch("/ai-chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    addMessage(data.reply, "bot");
+                });
+        }
+    </script>
+
+</body>
+
+</html>
